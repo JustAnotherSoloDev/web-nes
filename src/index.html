@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+      body {
+        background-color: black;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      .gamepad,
+      .canvas-container {
+        width: 500px;
+        margin: auto;
+      }
+      #pixels {
+        width: 500px;
+      }
+      .gamepad {
+        --gamepad-height: 200px;
+        width: 500px;
+        background: grey;
+        height: var(--gamepad-height);
+        padding: 2em;
+        display: flex;
+      }
+      .d-pad {
+        display: grid;
+        width: 50%;
+        grid-template-columns: 1fr 1fr 1fr;
+        height: calc(var(--gamepad-height) - 4em);
+      }
+
+      .action-buttons {
+        width: 35%;
+        display: flex;
+        justify-content: center;
+        align-items: end;
+      }
+      .action-button{
+        width: 50%;
+      }
+      .action-button,.option-button,.direction{
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <script src="./input.js"></script>
+    <script src="./index.js" type="module"></script>
+    <input type="file" id="file" />
+    <div class="main-container">
+      <div class="canvas-container">
+        <canvas id="pixels" width="256" height="240"></canvas>
+      </div>
+      <div class="gamepad-container">
+        <div class="gamepad">
+          <div class="d-pad">
+            <div></div>
+            <div class="up direction control" data-key="4">Up</div>
+            <div></div>
+            <div class="left direction control"data-key="6" >Left</div>
+            <div></div>
+            <div class="right direction control"data-key="7" >Right</div>
+            <div></div>
+            <div class="down direction control"data-key="5" >Down</div>
+            <div></div>
+          </div>
+          <div class="option-buttons buttons">
+            <div class="option-button start control" data-key="3">START</div>
+            <div class="option-button select control" data-key="2">SELECT</div>
+          </div>
+          <div class="action-buttons buttons">
+            <div class="action-button button-b control" data-key="1">B</div>
+            <div class="action-button button-a control" data-key="0">A</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script>
+      bindTouchControls();
+    </script>
+  </body>
+</html>
